@@ -6,7 +6,7 @@ export default function Header() {
       <nav>
         <h1>
           <Link href='/'>
-            <a>John Doe</a>
+            <a>Kiran Dhobale</a>
           </Link>
         </h1>
         <div>
