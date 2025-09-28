@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Header from "./Header";
 
-export default function Layout({ children, pageTitle, description }) {
+export default function Layout({ children, pageTitle, description, showHeader = false }) {
   return (
     <>
       <Head>
@@ -48,7 +48,7 @@ export default function Layout({ children, pageTitle, description }) {
         }
       `}</style>
       <main>
-        <Header />
+        {showHeader && <Header /> }
         <div className="content">{children}</div>
       </main>
     </>
