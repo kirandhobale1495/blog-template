@@ -11,7 +11,7 @@ export const Post = ({ post }) => {
         <>
             <article>
                 <HeadPost meta={meta} />
-                <Link href={'/blog' + link}>
+                <Link href={'/blog' + link} legacyBehavior>
                     <a>Read more &rarr;</a>
                 </Link>
             </article>

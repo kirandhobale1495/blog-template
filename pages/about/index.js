@@ -2,6 +2,7 @@ import Layout from '../../components/Layout'
 import styles from '../../styles/About.module.css'
 import { FaLinkedin, FaMedium } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
+import Link from 'next/link'
 
 const About = () => {
   const meta = {
@@ -12,7 +13,11 @@ const About = () => {
   }
 
   return (
-    <Layout meta={meta}>
+    <Layout 
+      pageTitle={meta.title}
+      description={meta.description}
+      showHeader={true}
+    >
       <div className={styles.aboutContainer}>
         <section className={`${styles.section} ${styles.heroSection}`}>
           <div className={styles.profileHeader}>
@@ -26,6 +31,9 @@ const About = () => {
                   e.target.src = '/placeholder.png';
                 }}
               />
+            </div>
+            <div>
+              Thanks to <a href="https://ryandsouza.in/about" target="_blank" rel="noopener noreferrer">Ryan D'Souza</a> being a great mentor and inspiring me to create my own website.
             </div>
             <div className={styles.introText}>
               <h1>About Me</h1>

@@ -5,12 +5,12 @@ export default function Header() {
     <>
       <nav>
         <h1>
-          <Link href='/'>
+          <Link href='/' legacyBehavior>
             <a>Kiran Dhobale</a>
           </Link>
         </h1>
         <div>
-          <Link href='/about'>
+          <Link href='/about' legacyBehavior>
             <a className='text'>About</a>
           </Link>
         </div>
