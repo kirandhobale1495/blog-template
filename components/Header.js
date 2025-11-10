@@ -14,6 +14,11 @@ export default function Header() {
             <a className='text'>About</a>
           </Link>
         </div>
+        {/* <div>
+          <Link href='/blogs' legacyBehavior>
+            <a className='text'>Blogs</a>
+          </Link>
+        </div> */}
       </nav>
       <style jsx>
         {`

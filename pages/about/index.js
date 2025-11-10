@@ -16,10 +16,13 @@ const About = () => {
     <Layout 
       pageTitle={meta.title}
       description={meta.description}
-      showHeader={true}
+      showHeader={false}
     >
       <div className={styles.aboutContainer}>
         <section className={`${styles.section} ${styles.heroSection}`}>
+           <div>
+              Thanks to <a href="https://ryandsouza.in/about" target="_blank" rel="noopener noreferrer">Ryan D'Souza</a> being a great mentor and inspiring me to create my own website!
+            </div>
           <div className={styles.profileHeader}>
             <div className={styles.imageWrapper}>
               <img
@@ -32,9 +35,7 @@ const About = () => {
                 }}
               />
             </div>
-            <div>
-              Thanks to <a href="https://ryandsouza.in/about" target="_blank" rel="noopener noreferrer">Ryan D'Souza</a> being a great mentor and inspiring me to create my own website.
-            </div>
+           
             <div className={styles.introText}>
               <h1>About Me</h1>
               <p>

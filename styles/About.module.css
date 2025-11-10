@@ -67,6 +67,7 @@
 }
 
 .introText {
+  /* display: flex; */
   flex: 1;
 }
 
