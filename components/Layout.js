@@ -10,6 +10,17 @@ export default function Layout({ children, pageTitle, description, showHeader = 
         <meta name="Description" content={description}></meta>
         <title>{pageTitle}</title>
         <meta name="title" content={pageTitle}></meta>
+        
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-WF0R06Y5L7"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-WF0R06Y5L7');
+        </script>
+
       </Head>
       <style jsx global>{`
         html,
