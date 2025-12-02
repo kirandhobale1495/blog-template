@@ -1,8 +1,16 @@
 function importAll(r) {
-    return r.keys().map((fileName) => ({
-        link: fileName.substr(1).replace(/\/index\.(mdx|js)$/, ""),
-        module: r(fileName)
-    }));
+    return r.keys().map((fileName) => {
+        const module = r(fileName);
+        // For MDX files, meta is in module.meta
+        // For JS files, meta can be in module.meta or we need to attach it
+        return {
+            link: fileName.substr(1).replace(/\/index\.(mdx|js)$/, ""),
+            module: module.default ? { 
+                default: module.default,
+                meta: module.meta 
+            } : module
+        };
+    });
 }
 
 // Import both MDX and JS files

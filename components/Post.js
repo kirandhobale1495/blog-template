@@ -2,12 +2,15 @@ import Link from 'next/link'
 import { HeadPost } from './HeadPost'
 
 export const Post = ({ post }) => {
+    if (!post || !post.module) {
+        return null;
+    }
+
     const {
         link,
-        module: { meta } = { meta: null },
+        module: { meta },
     } = post
 
-    // Skip rendering if meta is not available
     if (!meta) {
         return null;
     }
