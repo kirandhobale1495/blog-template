@@ -222,7 +222,7 @@ const StorybookImage = styled.div`
   figcaption {
     margin-top: 10px;
     font-style: italic;
-    color: #555;
+    color: #444;
     font-size: 0.9em;
   }
 `;
@@ -457,7 +457,7 @@ export default function AccessibilityGuide() {
         }
         .article-meta {
           margin-bottom: 1rem;
-          color: #666;
+          color: #555;
           font-size: 0.9rem;
         }
         html {
@@ -502,8 +502,8 @@ export default function AccessibilityGuide() {
       <div className="sr-only">
         <p>Accessibility Guide - Complete resource covering WCAG guidelines, testing tools, and implementation strategies for inclusive web design</p>
       </div>
-      <main id="main-content" aria-labelledby="page-title" tabIndex="-1">
-        <Section>
+
+      <Section>
           <header>
             <h1 id="page-title" tabIndex="-1">Accessibility in Web Design: A Complete Guide</h1>
             <div className="article-meta" aria-label="Article metadata and reading information">
@@ -1499,7 +1499,6 @@ export const AccessibleButton = () => (
           </a>
         </div>
       </Section>
-      </main>
     </Layout>
   );
 }
