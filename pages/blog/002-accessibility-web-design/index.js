@@ -1,7 +1,7 @@
  import React, { useEffect, useCallback } from 'react';
 import Layout from '../../../components/Layout';
 import styled from 'styled-components';
-import { FaUniversalAccess, FaCode, FaCheckCircle, FaExclamationTriangle, FaUsers, FaHistory, FaGlobe, FaGavel, FaMobile, FaRocket, FaBook, FaPlay, FaCog, FaBug } from 'react-icons/fa';
+import { FaCode, FaCheckCircle, FaExclamationTriangle, FaUsers, FaHistory, FaGlobe, FaGavel, FaMobile, FaRocket, FaBook, FaCog } from 'react-icons/fa';
 
 // Skip Link Styles
 const SkipLink = styled.a`
@@ -25,30 +25,6 @@ const SkipLink = styled.a`
  
   &:hover {
     background: #333;
-  }
-`;
-
-// Enhanced styles for screen reader only content
-const SROnly = styled.span`
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
- 
-  &.focus\\:not-sr-only:focus {
-    position: static;
-    width: auto;
-    height: auto;
-    padding: 0.5rem;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-    white-space: normal;
   }
 `;
 
@@ -161,36 +137,7 @@ const Table = styled.table`
   }
 `;
 
-const IconBox = styled.div`
-  border: 1px solid #e1e1e1;
-  border-radius: 6px;
-  padding: 15px;
-  margin: 5px 0;
-  background: #f8f9fa;
-  transition: all 0.2s ease;
-  cursor: pointer;
- 
-  &:focus {
-    outline: 3px solid #ffbf47;
-    outline-offset: 2px;
-    border-color: #0066cc;
-    background: #f0f8ff;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 102, 204, 0.15);
-  }
- 
-  &:focus-visible {
-    outline: 3px solid #ffbf47;
-    outline-offset: 2px;
-  }
- 
-  &:hover {
-    border-color: #0066cc;
-    background: #f0f8ff;
-    transform: translateY(-1px);
-    box-shadow: 0 2px 4px rgba(0, 102, 204, 0.1);
-  }
-`;
+const IconBox = styled.div``;
 
 const IconBoxHeader = styled.div`
   display: flex;
@@ -245,45 +192,10 @@ const CodeBlock = styled.pre`
 `;
 
 const MetricsCard = styled.div`
-  background: #f0f8ff;
-  // border: 1px solid #0066cc;
-  padding: 1.25rem;
-  border-radius: 6px;
-  margin: 1.5rem 0;
 `;
 
 const WCAGPrinciple = styled.div`
-  background: #f0f8ff;
-  border: 1px solid #0066cc;
-  border-radius: 6px;
-  padding: 15px;
-  margin: 10px 0;
-  transition: all 0.2s ease;
-  cursor: pointer;
- 
-  &:focus {
-    outline: 3px solid #ffbf47;
-    outline-offset: 2px;
-    border-color: #004499;
-    background: #e6f3ff;
-    transform: scale(1.02);
-    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.2);
-  }
- 
-  &:focus-visible {
-    outline: 3px solid #ffbf47;
-    outline-offset: 2px;
-  }
- 
-  &:hover {
-    border-color: #004499;
-    background: #e6f3ff;
-    transform: scale(1.01);
-    box-shadow: 0 2px 6px rgba(0, 102, 204, 0.15);
-  }
- 
   h3 {
-    color: #0066cc;
     margin-top: 0;
   }
 `;
@@ -309,7 +221,7 @@ const StorybookImage = styled.div`
   figcaption {
     margin-top: 10px;
     font-style: italic;
-    color: #666;
+    color: #555;
     font-size: 0.9em;
   }
 `;
@@ -345,7 +257,7 @@ const navTipStyle = {
   marginTop: '1rem',
   fontSize: '0.9rem',
   fontStyle: 'italic',
-  color: '#666'
+  color: '#555'
 };
 
 const spacingStyle = {
@@ -358,7 +270,7 @@ const outlineStyle = {
 
 const iconStyle = {
   marginRight: '8px',
-  color: '#0066cc'
+  // color: '#0066cc'
 };
 
 const warningIconStyle = {
@@ -545,6 +457,11 @@ export default function AccessibilityGuide() {
           white-space: nowrap;
           border: 0;
         }
+        .article-meta {
+          margin-bottom: 1rem;
+          color: #666;
+          font-size: 0.9rem;
+        }
         html {
           scroll-behavior: smooth;
         }
@@ -577,24 +494,32 @@ export default function AccessibilityGuide() {
         }
       `}</style>
       <SkipLink href="#main-content">Skip to main content</SkipLink>
+      <SkipLink href="#table-of-contents" style={{left: '160px'}}>Skip to table of contents</SkipLink>
+      <SkipLink href="#testing-tools" style={{left: '340px'}}>Skip to testing tools</SkipLink>
       <div id="live-region" aria-live="polite" aria-atomic="true" className="sr-only"></div>
       <div className="sr-only">
         <p>Note: This blog post has been designed with full accessibility features including keyboard navigation, screen reader support, and WCAG compliance. Please explore and test the accessibility features discussed throughout this guide.</p>
+        <p>Navigation tip: Use heading navigation (H key in screen readers) to quickly jump between sections. All interactive elements are keyboard accessible using Tab and Enter keys.</p>
       </div>
-      <main id="main-content" role="main" aria-labelledby="page-title" tabIndex="-1">
+      <div className="sr-only">
+        <p>Accessibility Guide - Complete resource covering WCAG guidelines, testing tools, and implementation strategies for inclusive web design</p>
+      </div>
+      <main id="main-content" aria-labelledby="page-title" tabIndex="-1">
         <Section>
-          <h1 id="page-title">Accessibility in Web Design: A Complete Guide</h1>
-          <div role="contentinfo" aria-label="Article metadata">
-            <p>
-              <time dateTime="2025-11-23" aria-label="Publication date">
-                <strong>Published:</strong> November 23, 2025
-              </time>
-              {' • '}
-              <span>
-                <strong>Read time:</strong> 18 minutes
-              </span>
-            </p>
-          </div>
+          <header>
+            <h1 id="page-title" tabIndex="-1">Accessibility in Web Design: A Complete Guide</h1>
+            <div className="article-meta" aria-label="Article metadata and reading information">
+              <p>
+                <time dateTime="2025-11-23" aria-label="Publication date: November 23, 2025">
+                  <strong>Published:</strong> November 23, 2025
+                </time>
+                {' • '}
+                <span aria-label="Estimated reading time: 18 minutes">
+                  <strong>Read time:</strong> 18 minutes
+                </span>
+              </p>
+            </div>
+          </header>
        
         <MetricsCard>
           <h2>🌐 What is Accessibility?</h2>
@@ -611,11 +536,13 @@ export default function AccessibilityGuide() {
       </Section>
 
       <Section>
-        <h2 id="table-of-contents">📋 Table of Contents</h2>
+        <h2 id="table-of-contents" tabIndex="-1">📋 Table of Contents</h2>
         <WCAGPrinciple>
           <div>
-            <nav role="navigation" aria-labelledby="table-of-contents">
-              <ol style={tocListStyle}>
+            <p className="sr-only">This table of contents contains 16 sections. Use Tab to navigate through the links, or press Enter to jump to a section.</p>
+            <nav role="navigation" aria-labelledby="table-of-contents" aria-describedby="toc-instructions">
+              <p id="toc-instructions" className="sr-only">Navigate this guide using the following 16 sections. Each link will take you directly to that topic.</p>
+              <ol style={tocListStyle} role="list">
                 <li><a href="#why-accessibility-matters" style={linkStyle}>Why Does Accessibility Matter?</a></li>
                 <li><a href="#understanding-disabilities" style={linkStyle}>Understanding Types of Disabilities</a></li>
                 <li><a href="#wcag-section" style={linkStyle}>Web Content Accessibility Guidelines (WCAG)</a></li>
@@ -623,7 +550,6 @@ export default function AccessibilityGuide() {
                 <li><a href="#semantic-html" style={linkStyle}>Semantic HTML Tags & Examples</a></li>
                 <li><a href="#color-contrast" style={linkStyle}>Color Contrast: Good vs Bad Examples</a></li>
                 <li><a href="#aria-overview" style={linkStyle}>ARIA Tags Overview</a></li>
-                <li><a href="#aria-live-regions" style={linkStyle}>Understanding ARIA Live Regions</a></li>
                 <li><a href="#forms-accessibility" style={linkStyle}>Forms Accessibility</a></li>
                 <li><a href="#links-buttons" style={linkStyle}>Links and Buttons Accessibility</a></li>
                 <li><a href="#audio-video" style={linkStyle}>Audio & Video Accessibility</a></li>
@@ -636,60 +562,19 @@ export default function AccessibilityGuide() {
                 <li><a href="#references-heading" style={linkStyle}>References & Resources</a></li>
               </ol>
             </nav>
-            <p style={navTipStyle}>
-              💡 <strong>Navigation Tip:</strong> Use keyboard shortcuts Alt+M to jump to main content or Alt+N to return to navigation.
-            </p>
           </div>
         </WCAGPrinciple>
       </Section>
 
       <Section>
         <h2 id="why-accessibility-matters">Why Does Accessibility Matter?</h2>
-        <GridContainer role="list" aria-label="Benefits of web accessibility">
-          <IconBox
-            role="listitem"
-            tabIndex="0"
-            aria-labelledby="legal-compliance-title"
-            onKeyDown={handleKeyPress}
-          >
-            <IconBoxHeader>
-              <h3 id="legal-compliance-title"><FaCheckCircle size={20} aria-hidden="true" /> Legal Compliance</h3>
-            </IconBoxHeader>
-            <p>Many countries have laws requiring accessible websites</p>
-          </IconBox>
-          <IconBox
-            role="listitem"
-            tabIndex="0"
-            aria-labelledby="better-ux-title"
-            onKeyDown={handleKeyPress}
-          >
-            <IconBoxHeader>
-              <h3 id="better-ux-title"><FaUsers size={20} aria-hidden="true" /> Better UX</h3>
-            </IconBoxHeader>
-            <p>Accessibility improves usability for all users</p>
-          </IconBox>
-          <IconBox
-            role="listitem"
-            tabIndex="0"
-            aria-labelledby="seo-benefits-title"
-            onKeyDown={handleKeyPress}
-          >
-            <IconBoxHeader>
-              <h3 id="seo-benefits-title"><FaCode size={20} aria-hidden="true" /> SEO Benefits</h3>
-            </IconBoxHeader>
-            <p>Accessible sites often rank better in search engines</p>
-          </IconBox>
-          <IconBox
-            role="listitem"
-            tabIndex="0"
-            aria-labelledby="social-responsibility-title"
-            onKeyDown={handleKeyPress}
-          >
-            <IconBoxHeader>
-              <h3 id="social-responsibility-title"><FaUniversalAccess size={20} aria-hidden="true" /> Social Responsibility</h3>
-            </IconBoxHeader>
-            <p>It's the right thing to do</p>
-          </IconBox>
+        <GridContainer aria-label="Benefits of web accessibility">
+           <ul>
+              <li><strong>Legal Compliance:</strong> Many countries have laws requiring accessible websites</li>
+              <li><strong>Better UX :</strong> Accessibility improves usability for all users</li>
+              <li><strong>SEO Benefits:</strong> Accessible sites often rank better in search engines</li>
+              <li><strong>Social Responsibility:</strong> It's the right thing to do</li>
+            </ul>
         </GridContainer>
       </Section>
 
@@ -779,7 +664,7 @@ export default function AccessibilityGuide() {
           </div>
         </WCAGPrinciple>
 
-        <p style={{marginTop: '1.5rem', fontStyle: 'italic', color: '#555'}}>
+        <p style={{marginTop: '1.5rem', fontStyle: 'italic', color: '#444'}}>
           <strong>Key Insight:</strong> These disability categories often overlap, and many users experience multiple types of challenges.
           Inclusive design that addresses all these areas creates the most accessible and usable experiences for everyone.
         </p>
@@ -791,25 +676,29 @@ export default function AccessibilityGuide() {
           Published by W3C, WCAG provides a technical checklist for accessibility.
           It is based on four fundamental principles:
         </p>
-        <>
+        <div role="region" aria-labelledby="wcag-section" aria-describedby="wcag-description">
           <VisuallyHidden id="wcag-description">
-            List of four WCAG principles with descriptions and examples for creating accessible web content
+            Interactive list of four WCAG principles with descriptions and examples. Use Tab to navigate between principles, Enter to expand details, and arrow keys for quick navigation.
           </VisuallyHidden>
-          {wcagPrinciples.map((principle, index) => (
-            <WCAGPrinciple
-              key={index}
-              role="listitem"
-              tabIndex="0"
-              aria-labelledby={`principle-${index}-title`}
-              aria-describedby={`principle-${index}-desc`}
-              onKeyDown={handleKeyPress}
-            >
-              <h3 id={`principle-${index}-title`}>{principle.title}</h3>
-              <p id={`principle-${index}-desc`}>{principle.description}</p>
-              <p><strong>Examples:</strong> {principle.examples.join(', ')}</p>
-            </WCAGPrinciple>
-          ))}
-        </>
+          <div role="list" aria-label="WCAG 2.1 Four Principles">
+            {wcagPrinciples.map((principle, index) => (
+              <WCAGPrinciple
+                key={index}
+                role="listitem"
+                tabIndex="0"
+                aria-labelledby={`principle-${index}-title`}
+                aria-describedby={`principle-${index}-desc principle-${index}-examples`}
+                aria-posinset={index + 1}
+                aria-setsize={wcagPrinciples.length}
+                onKeyDown={handleKeyPress}
+              >
+                <h3 id={`principle-${index}-title`}>{principle.title}</h3>
+                <p id={`principle-${index}-desc`}>{principle.description}</p>
+                <p id={`principle-${index}-examples`}><strong>Examples:</strong> {principle.examples.join(', ')}</p>
+              </WCAGPrinciple>
+            ))}
+          </div>
+        </div>
       </Section>
 
       <Section>
@@ -850,45 +739,48 @@ export default function AccessibilityGuide() {
       </Section>
 
       <Section>
-        <h2 id="semantic-html">Semantic HTML Tags & Examples</h2>
-        <p>Semantic HTML elements provide meaning and structure that assistive technologies can understand and navigate. Here are the key semantic tags with practical examples:</p>
+        <header>
+          <h2 id="semantic-html" tabIndex="-1">Semantic HTML Tags & Examples</h2>
+          <p>Semantic HTML elements provide meaning and structure that assistive technologies can understand and navigate. Here are the key semantic tags with practical examples:</p>
+          <div className="sr-only">
+            <p>This section contains 3 categories of HTML elements: Primary Structure Elements, Content Elements, and Key Benefits. Each category includes links to MDN documentation for detailed implementation guidance.</p>
+          </div>
+        </header>
        
-        <h3>Document Structure Tags</h3>
         <WCAGPrinciple>
    
           <div>
-            <h4><FaCode style={iconStyle} />Primary Structure Elements</h4>
+            <h3><FaCode style={iconStyle} />Primary Structure Elements</h3>
             <ul>
-              <li><strong>&lt;header&gt;</strong> - Page or section header with branding, navigation, or introductory content</li>
-              <li><strong>&lt;nav&gt;</strong> - Navigation links or menus</li>
-              <li><strong>&lt;main&gt;</strong> - Primary content area (only one per page)</li>
-              <li><strong>&lt;section&gt;</strong> - Thematic grouping of content with a heading</li>
-              <li><strong>&lt;article&gt;</strong> - Self-contained, reusable content (blog post, news article)</li>
-              <li><strong>&lt;aside&gt;</strong> - Complementary content (sidebar, related links)</li>
-              <li><strong>&lt;footer&gt;</strong> - Footer information for page or section</li>
-            </ul>
-          </div>
-        </WCAGPrinciple>
-
-        <h3>Content Organization Tags</h3>
-        <WCAGPrinciple>
-          <div>
-            <h4><FaCheckCircle style={iconStyle} />Content Elements</h4>
-            <ul>
-              <li><strong>&lt;h1&gt; - &lt;h6&gt;</strong> - Hierarchical headings (only one &lt;h1&gt; per page)</li>
-              <li><strong>&lt;p&gt;</strong> - Paragraphs of text content</li>
-              <li><strong>&lt;figure&gt; & &lt;figcaption&gt;</strong> - Images, diagrams with captions</li>
-              <li><strong>&lt;blockquote&gt;</strong> - Extended quotations</li>
-              <li><strong>&lt;cite&gt;</strong> - Citations and references</li>
-              <li><strong>&lt;time&gt;</strong> - Dates and times with machine-readable format</li>
-              <li><strong>&lt;address&gt;</strong> - Contact information</li>
+              <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header" target="_blank" rel="noopener noreferrer" style={linkStyle}>&lt;header&gt;</a></strong> - Page or section header with branding, navigation, or introductory content</li>
+              <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav" target="_blank" rel="noopener noreferrer" style={linkStyle}>&lt;nav&gt;</a></strong> - Navigation links or menus</li>
+              <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main" target="_blank" rel="noopener noreferrer" style={linkStyle}>&lt;main&gt;</a></strong> - Primary content area (only one per page)</li>
+              <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section" target="_blank" rel="noopener noreferrer" style={linkStyle}>&lt;section&gt;</a></strong> - Thematic grouping of content with a heading</li>
+              <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article" target="_blank" rel="noopener noreferrer" style={linkStyle}>&lt;article&gt;</a></strong> - Self-contained, reusable content (blog post, news article)</li>
+              <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside" target="_blank" rel="noopener noreferrer" style={linkStyle}>&lt;aside&gt;</a></strong> - Complementary content (sidebar, related links)</li>
+              <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer" target="_blank" rel="noopener noreferrer" style={linkStyle}>&lt;footer&gt;</a></strong> - Footer information for page or section</li>
             </ul>
           </div>
         </WCAGPrinciple>
 
         <WCAGPrinciple>
           <div>
-            <h4><FaExclamationTriangle style={warningIconStyle} />Key Benefits of Semantic HTML</h4>
+            <h3><FaCheckCircle style={iconStyle} />Content Elements</h3>
+            <ul>
+              <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements" target="_blank" rel="noopener noreferrer" style={linkStyle}>&lt;h1&gt; - &lt;h6&gt;</a></strong> - Hierarchical headings (only one &lt;h1&gt; per page)</li>
+              <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p" target="_blank" rel="noopener noreferrer" style={linkStyle}>&lt;p&gt;</a></strong> - Paragraphs of text content</li>
+              <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure" target="_blank" rel="noopener noreferrer" style={linkStyle}>&lt;figure&gt;</a> & <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figcaption" target="_blank" rel="noopener noreferrer" style={linkStyle}>&lt;figcaption&gt;</a></strong> - Images, diagrams with captions</li>
+              <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote" target="_blank" rel="noopener noreferrer" style={linkStyle}>&lt;blockquote&gt;</a></strong> - Extended quotations</li>
+              <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/cite" target="_blank" rel="noopener noreferrer" style={linkStyle}>&lt;cite&gt;</a></strong> - Citations and references</li>
+              <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time" target="_blank" rel="noopener noreferrer" style={linkStyle}>&lt;time&gt;</a></strong> - Dates and times with machine-readable format</li>
+              <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/address" target="_blank" rel="noopener noreferrer" style={linkStyle}>&lt;address&gt;</a></strong> - Contact information</li>
+            </ul>
+          </div>
+        </WCAGPrinciple>
+
+        <WCAGPrinciple>
+          <div>
+            <h3><FaExclamationTriangle style={warningIconStyle} />Key Benefits of Semantic HTML</h3>
             <ul>
               <li><strong>Screen Reader Navigation:</strong> Users can jump between landmarks (&lt;nav&gt;, &lt;main&gt;, &lt;aside&gt;)</li>
               <li><strong>SEO Improvement:</strong> Search engines better understand content structure and hierarchy</li>
@@ -899,12 +791,17 @@ export default function AccessibilityGuide() {
           </div>
         </WCAGPrinciple>
 
-        <p><strong>💡 Pro Tip:</strong> Always validate your HTML structure using the <a href="https://validator.w3.org/" target="_blank" rel="noopener noreferrer" style={{color: '#0066cc', textDecoration: 'underline'}}>W3C Markup Validator</a> to ensure semantic correctness and accessibility compliance.</p>
+        <p><strong>💡 Pro Tip:</strong> Always validate your HTML structure using the <a href="https://validator.w3.org/" target="_blank" rel="noopener noreferrer" style={linkStyle}>W3C Markup Validator</a> to ensure semantic correctness and accessibility compliance.</p>
       </Section>
 
       <Section>
-        <h2 id="color-contrast">Color Contrast: Good vs Bad Examples</h2>
-        <p>Color contrast is crucial for readability and WCAG compliance. Here are visual examples showing the difference:</p>
+        <header>
+          <h2 id="color-contrast" tabIndex="-1">Color Contrast: Good vs Bad Examples</h2>
+          <p>Color contrast is crucial for readability and WCAG compliance. Here are visual examples showing the difference:</p>
+          <div className="sr-only">
+            <p>This section demonstrates color contrast with live examples, WCAG requirements table, and testing tools. Visual examples show compliant and non-compliant color combinations.</p>
+          </div>
+        </header>
        
         <WCAGPrinciple>
           <div>
@@ -980,106 +877,80 @@ export default function AccessibilityGuide() {
           <div>
             <h3><FaCode style={iconStyle} />Testing Tools for Color Contrast</h3>
             <ul>
-              <li><strong><a href="https://webaim.org/resources/contrastchecker/" target="_blank" rel="noopener noreferrer" style={{color: '#0066cc', textDecoration: 'underline'}}>WebAIM Contrast Checker</a>:</strong> Online tool for checking color combinations</li>
-              <li><strong><a href="https://developer.chrome.com/docs/devtools/accessibility/contrast/" target="_blank" rel="noopener noreferrer" style={{color: '#0066cc', textDecoration: 'underline'}}>Chrome DevTools</a>:</strong> Built-in contrast ratio checker in Elements panel</li>
-              <li><strong><a href="https://www.tpgi.com/color-contrast-checker/" target="_blank" rel="noopener noreferrer" style={{color: '#0066cc', textDecoration: 'underline'}}>Colour Contrast Analyser</a>:</strong> Desktop app for comprehensive testing</li>
-              <li><strong><a href="https://www.deque.com/axe/devtools/" target="_blank" rel="noopener noreferrer" style={{color: '#0066cc', textDecoration: 'underline'}}>axe DevTools</a>:</strong> Browser extension with automated contrast checking</li>
-              <li><strong><a href="https://www.getstark.co/" target="_blank" rel="noopener noreferrer" style={{color: '#0066cc', textDecoration: 'underline'}}>Stark (Figma/Sketch)</a>:</strong> Design tool plugins for real-time contrast validation</li>
+              <li><strong><a href="https://webaim.org/resources/contrastchecker/" target="_blank" rel="noopener noreferrer" style={linkStyle}>WebAIM Contrast Checker</a>:</strong> Online tool for checking color combinations</li>
+              <li><strong><a href="https://developer.chrome.com/docs/devtools/accessibility/contrast/" target="_blank" rel="noopener noreferrer" style={linkStyle}>Chrome DevTools</a>:</strong> Built-in contrast ratio checker in Elements panel</li>
+              <li><strong><a href="https://www.tpgi.com/color-contrast-checker/" target="_blank" rel="noopener noreferrer" style={linkStyle}>Colour Contrast Analyser</a>:</strong> Desktop app for comprehensive testing</li>
+              <li><strong><a href="https://www.deque.com/axe/devtools/" target="_blank" rel="noopener noreferrer" style={linkStyle}>axe DevTools</a>:</strong> Browser extension with automated contrast checking</li>
+              <li><strong><a href="https://www.getstark.co/" target="_blank" rel="noopener noreferrer" style={linkStyle}>Stark (Figma/Sketch)</a>:</strong> Design tool plugins for real-time contrast validation</li>
             </ul>
           </div>
         </WCAGPrinciple>
       </Section>
 
       <Section>
-        <h2 id="aria-overview">ARIA Tags Overview</h2>
-        <p>ARIA (Accessible Rich Internet Applications) enhances accessibility for dynamic content by providing semantic information to assistive technologies:</p>
+        <header>
+          <h2 id="aria-overview" tabIndex="-1">ARIA Tags Overview</h2>
+          <p>ARIA (Accessible Rich Internet Applications) enhances accessibility for dynamic content by providing semantic information to assistive technologies:</p>
+          <div className="sr-only">
+            <p>This section covers Essential ARIA Tags and Common Use Cases. All ARIA attribute links connect to MDN documentation for implementation details.</p>
+          </div>
+        </header>
        
         <WCAGPrinciple>
           <div>
-            <h3><FaCode style={{ marginRight: '8px', color: '#0066cc' }} />Essential ARIA Tags</h3>
+            <h3><FaCode style={iconStyle} />Essential ARIA Tags</h3>
             <ul>
-              <li><strong>aria-label:</strong> Provides accessible name when visible text isn't sufficient</li>
-              <li><strong>aria-labelledby:</strong> References one or more element IDs to create an accessible name by combining their text content. Particularly useful when multiple headings or labels together provide complete context for an element.</li>
-              <li><strong>aria-describedby:</strong> References elements that provide additional description</li>
-              <li><strong>aria-hidden:</strong> Hides decorative elements from screen readers</li>
-              <li><strong>aria-expanded:</strong> Indicates if a collapsible element is open or closed</li>
-              <li><strong>aria-disabled:</strong> Indicates that an element is disabled but focusable</li>
-              <li><strong>aria-live:</strong> Announces dynamic content changes to screen readers</li>
-              <li><strong>role:</strong> Defines the purpose or function of an element</li>
+              <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label" target="_blank" rel="noopener noreferrer" style={linkStyle}>aria-label</a>:</strong> Provides accessible name when visible text isn't sufficient</li>
+              <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-labelledby" target="_blank" rel="noopener noreferrer" style={linkStyle}>aria-labelledby</a>:</strong> References one or more element IDs to create an accessible name by combining their text content. Particularly useful when multiple headings or labels together provide complete context for an element.</li>
+              <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby" target="_blank" rel="noopener noreferrer" style={linkStyle}>aria-describedby</a>:</strong> References elements that provide additional description</li>
+              <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-hidden" target="_blank" rel="noopener noreferrer" style={linkStyle}>aria-hidden</a>:</strong> Hides decorative elements from screen readers</li>
+              <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded" target="_blank" rel="noopener noreferrer" style={linkStyle}>aria-expanded</a>:</strong> Indicates if a collapsible element is open or closed</li>
+              <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-disabled" target="_blank" rel="noopener noreferrer" style={linkStyle}>aria-disabled</a>:</strong> Indicates that an element is disabled but focusable</li>
+              <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-live" target="_blank" rel="noopener noreferrer" style={linkStyle}>aria-live</a>:</strong> Announces dynamic content changes to screen readers (polite, assertive, off)</li>
+              <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles" target="_blank" rel="noopener noreferrer" style={linkStyle}>role</a>:</strong> Defines the purpose or function of an element</li>
             </ul>
           </div>
         </WCAGPrinciple>
 
         <WCAGPrinciple>
           <div>
-            <h3><FaCheckCircle style={{ marginRight: '8px', color: '#28a745' }} />Common Use Cases</h3>
+            <h3><FaCheckCircle style={successIconStyle} />Common Use Cases</h3>
             <ul>
               <li><strong>Form Controls:</strong> Use aria-label for buttons with only icons</li>
-              <li><strong>Dynamic Content:</strong> Use aria-live regions for status updates</li>
+              <li><strong>Dynamic Content:</strong> Use aria-live regions for status updates and notifications</li>
               <li><strong>Complex Widgets:</strong> Use role attributes for custom components</li>
-              <li><strong>Navigation:</strong> Use aria-expanded for dropdown menus</li>
+              <li><strong>Navigation:</strong> Use aria-expanded for dropdown menus and collapsible content</li>
               <li><strong>Modal Dialogs:</strong> Use aria-modal and proper focus management</li>
+              <li><strong>Form Validation:</strong> Use aria-describedby to link error messages to form fields</li>
             </ul>
           </div>
         </WCAGPrinciple>
+
       </Section>
 
-      <Section>
-        <h2 id="aria-live-regions">Understanding ARIA Live Regions</h2>
-        <p>ARIA Live Regions are essential for announcing dynamic content changes to screen reader users. They provide real-time feedback without requiring users to navigate to different parts of the page.</p>
-       
-        <WCAGPrinciple>
-          <div>
-            <h3><FaCode style={{ marginRight: '8px', color: '#0066cc' }} />Live Region Types</h3>
-            <ul>
-              <li><strong>aria-live="polite":</strong> Announces changes when the user is idle (recommended for most cases)</li>
-              <li><strong>aria-live="assertive":</strong> Immediately interrupts screen reader (use for critical alerts only)</li>
-              <li><strong>aria-live="off":</strong> No announcements (default behavior)</li>
-            </ul>
-          </div>
-        </WCAGPrinciple>
 
-        <WCAGPrinciple>
-          <div>
-            <h3><FaExclamationTriangle style={{ marginRight: '8px', color: '#ff9800' }} />Key Attributes</h3>
-            <ul>
-              <li><strong>aria-atomic="true":</strong> Announces the entire region content (not just changes)</li>
-              <li><strong>aria-atomic="false":</strong> Only announces the changed content (default)</li>
-              <li><strong>aria-relevant:</strong> Specifies what types of changes to announce (additions, removals, text, all)</li>
-            </ul>
-          </div>
-        </WCAGPrinciple>
-
-        <WCAGPrinciple>
-          <div>
-            <h3><FaCode style={{ marginRight: '8px', color: '#dc3545' }} />Best Practices</h3>
-            <ul>
-              <li><strong>Use sparingly:</strong> Too many announcements can overwhelm users</li>
-              <li><strong>Keep messages concise:</strong> Clear, brief messages are more effective</li>
-              <li><strong>Test with screen readers:</strong> Different screen readers may behave differently</li>
-              <li><strong>Prefer "polite":</strong> Only use "assertive" for critical errors or urgent information</li>
-              <li><strong>Provide alternatives:</strong> Visual users should also see the same information</li>
-            </ul>
-          </div>
-        </WCAGPrinciple>
-      </Section>
 
       <Section>
-        <h2 id="forms-accessibility">Forms Accessibility</h2>
-        <p>Forms are critical for user interaction and often serve as gateways to essential services. Accessible forms ensure that users with disabilities can input data effectively and complete important tasks independently.</p>
+        <header>
+          <h2 id="forms-accessibility" tabIndex="-1">Forms Accessibility</h2>
+          <p>Forms are critical for user interaction and often serve as gateways to essential services. Accessible forms ensure that users with disabilities can input data effectively and complete important tasks independently.</p>
+          <div className="sr-only">
+            <p>This section covers 4 key areas: Essential Form Tags, Form Validation, Common Pitfalls, and Best Practices for Form Groups. Each subsection includes practical examples and implementation guidance.</p>
+          </div>
+        </header>
 
         <WCAGPrinciple>
           <div>
             <h3><FaCode style={{ marginRight: '8px', color: '#0066cc' }} />Essential Form Tags & Attributes</h3>
             <ul>
-              <li><strong>&lt;label&gt;:</strong> Provides accessible names for form controls. Use the "for" attribute to associate with input IDs</li>
-              <li><strong>&lt;fieldset&gt; & &lt;legend&gt;:</strong> Groups related form controls and provides a group title, essential for radio buttons and checkboxes</li>
-              <li><strong>id attribute:</strong> Creates unique identifiers that link labels to inputs and enable ARIA relationships</li>
-              <li><strong>name attribute:</strong> Identifies form data when submitted and groups related inputs like radio buttons</li>
-              <li><strong>type attribute:</strong> Specifies input types (text, email, password, date) which provide appropriate virtual keyboards and validation</li>
-              <li><strong>required attribute:</strong> Indicates mandatory fields and triggers browser validation messages</li>
-              <li><strong>aria-describedby:</strong> References additional descriptive text like help instructions or error messages</li>
-              <li><strong>aria-labelledby:</strong> References multiple elements that together provide the accessible name</li>
+              <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label" target="_blank" rel="noopener noreferrer" style={linkStyle}>&lt;label&gt;</a>:</strong> Provides accessible names for form controls. Use the "for" attribute to associate with input IDs</li>
+              <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset" target="_blank" rel="noopener noreferrer" style={linkStyle}>&lt;fieldset&gt;</a> & <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/legend" target="_blank" rel="noopener noreferrer" style={linkStyle}>&lt;legend&gt;</a>:</strong> Groups related form controls and provides a group title, essential for radio buttons and checkboxes</li>
+              <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id" target="_blank" rel="noopener noreferrer" style={linkStyle}>id attribute</a>:</strong> Creates unique identifiers that link labels to inputs and enable ARIA relationships</li>
+              <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name" target="_blank" rel="noopener noreferrer" style={linkStyle}>name attribute</a>:</strong> Identifies form data when submitted and groups related inputs like radio buttons</li>
+              <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#type" target="_blank" rel="noopener noreferrer" style={linkStyle}>type attribute</a>:</strong> Specifies input types (text, email, password, date) which provide appropriate virtual keyboards and validation</li>
+              <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/required" target="_blank" rel="noopener noreferrer" style={linkStyle}>required attribute</a>:</strong> Indicates mandatory fields and triggers browser validation messages</li>
+              <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby" target="_blank" rel="noopener noreferrer" style={linkStyle}>aria-describedby</a>:</strong> References additional descriptive text like help instructions or error messages</li>
+              <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-labelledby" target="_blank" rel="noopener noreferrer" style={linkStyle}>aria-labelledby</a>:</strong> References multiple elements that together provide the accessible name</li>
             </ul>
           </div>
         </WCAGPrinciple>
@@ -1235,6 +1106,27 @@ export default function AccessibilityGuide() {
           <div>
             <h3><FaCode style={{ marginRight: '8px', color: '#0066cc' }} />1999: WCAG 1.0 Released</h3>
             <p>The first Web Content Accessibility Guidelines provided 14 guidelines with checkpoints for Priority 1, 2, and 3 compliance levels. This established the foundation for modern web accessibility standards.</p>
+            <p><strong>Key Features of WCAG 1.0:</strong></p>
+            <ul>
+              <li><strong>14 Core Guidelines:</strong> Covered essential areas like providing text alternatives, ensuring keyboard accessibility, and using markup properly</li>
+              <li><strong>Priority System:</strong> Priority 1 (must satisfy), Priority 2 (should satisfy), Priority 3 (may satisfy) - creating a clear hierarchy of importance</li>
+              <li><strong>Checkpoint-Based Approach:</strong> Each guideline contained specific, testable checkpoints that developers could verify</li>
+              <li><strong>Technology-Agnostic Principles:</strong> Focused on underlying accessibility concepts rather than specific technologies</li>
+              <li><strong>International Adoption:</strong> Became the global standard, influencing national accessibility laws worldwide</li>
+            </ul>
+            <p><strong>WCAG 1.0 Priority Levels Explained:</strong></p>
+            <ul>
+              <li><strong>Priority 1 (Critical):</strong> Checkpoints that a web content developer <em>must</em> satisfy. Failure to meet these makes it impossible for one or more groups of users with disabilities to access information. Examples: providing alt text for images, ensuring keyboard accessibility.</li>
+              <li><strong>Priority 2 (Important):</strong> Checkpoints that a web content developer <em>should</em> satisfy. Failure to meet these makes it difficult for users with disabilities to access information. Examples: avoiding deprecated HTML elements, providing skip navigation links.</li>
+              <li><strong>Priority 3 (Beneficial):</strong> Checkpoints that a web content developer <em>may</em> address. Meeting these improves accessibility but is not essential for basic access. Examples: providing summaries for complex tables, using clear and simple language.</li>
+            </ul>
+            <p><strong>Conformance Levels:</strong></p>
+            <ul>
+              <li><strong>Level A:</strong> All Priority 1 checkpoints satisfied</li>
+              <li><strong>Level AA (Double-A):</strong> All Priority 1 and Priority 2 checkpoints satisfied</li>
+              <li><strong>Level AAA (Triple-A):</strong> All Priority 1, 2, and 3 checkpoints satisfied</li>
+            </ul>
+            <p><strong>Impact:</strong> WCAG 1.0 transformed web accessibility from ad-hoc practices to systematic, measurable standards. It provided the first comprehensive framework for creating accessible web content and influenced legislation in multiple countries, including Section 508 in the United States.</p>
           </div>
         </WCAGPrinciple>
 
@@ -1274,38 +1166,33 @@ export default function AccessibilityGuide() {
         <WCAGPrinciple>
           <div>
             <h3><FaGavel style={{ marginRight: '8px', color: '#0066cc' }} />Americans with Disabilities Act (ADA)</h3>
-            <p><strong>Legal Foundation:</strong> The ADA (1990) is the primary U.S. civil rights law prohibiting discrimination based on disability. While it doesn't explicitly mention websites, courts have increasingly applied ADA requirements to digital accessibility, especially for public accommodations and government entities.</p>
+            <p><strong>What is the ADA?</strong> The ADA is a law from 1990 that says people with disabilities cannot be discriminated against. Even though it was written before websites existed, judges now say websites must follow ADA rules too.</p>
+           
+            <p><strong>Who must follow ADA rules:</strong></p>
             <ul>
-              <li><strong>Title II:</strong> State and local government services (must be accessible)</li>
-              <li><strong>Title III:</strong> Places of public accommodation (hotels, restaurants, retail stores, etc.)</li>
-              <li><strong>Legal Standard:</strong> Courts often reference WCAG 2.1 Level AA as the benchmark for compliance</li>
+              <li><strong>Government websites:</strong> All city, state, and local government sites must be accessible to everyone</li>
+              <li><strong>Public businesses:</strong> Hotels, restaurants, stores, banks, and other businesses open to the public</li>
+              <li><strong>What courts expect:</strong> Most judges use WCAG 2.1 Level AA as the standard to decide if a website is accessible enough</li>
             </ul>
-          </div>
-        </WCAGPrinciple>
-
-        <WCAGPrinciple>
-          <div>
-            <h3><FaCode style={{ marginRight: '8px', color: '#0066cc' }} />WCAG (Web Content Accessibility Guidelines)</h3>
-            <p><strong>Technical Standards:</strong> WCAG provides the technical criteria and testing procedures for digital accessibility. It's the internationally recognized standard for web accessibility compliance.</p>
-            <ul>
-              <li><strong>WCAG 2.1 Level AA:</strong> Current industry standard and legal safe harbor</li>
-              <li><strong>WCAG 2.2:</strong> Latest version (2023) with additional criteria for mobile and cognitive accessibility</li>
-              <li><strong>WCAG 3.0:</strong> Future version in development with new testing methodologies</li>
-              <li><strong>Scope:</strong> Covers web content, mobile apps, PDFs, and digital documents</li>
-            </ul>
+           
+            <p><strong>Why this matters:</strong> If your website isn't accessible, people with disabilities can sue you. Many businesses have been sued and had to pay thousands of dollars in legal fees and settlements.</p>
           </div>
         </WCAGPrinciple>
 
         <WCAGPrinciple>
           <div>
             <h3><FaExclamationTriangle style={{ marginRight: '8px', color: '#ff9800' }} />VPAT (Voluntary Product Accessibility Template)</h3>
-            <p><strong>Compliance Documentation:</strong> VPAT is a standardized document format that helps vendors and buyers evaluate how well products conform to accessibility standards like WCAG and Section 508.</p>
+            <p><strong>What is a VPAT?</strong> A VPAT is like a report card that shows how accessible your website or software is. It's a form that lists all the accessibility rules and tells you which ones your product follows and which ones it doesn't.</p>
+           
+            <p><strong>Why do you need a VPAT:</strong></p>
             <ul>
-              <li><strong>Purpose:</strong> Provides transparent accessibility compliance information</li>
-              <li><strong>Format:</strong> Structured template mapping product features to WCAG success criteria</li>
-              <li><strong>Benefits:</strong> Enables procurement decisions, risk assessment, and remediation planning</li>
-              <li><strong>Required for:</strong> Federal government purchases, many enterprise B2B sales</li>
+              <li><strong>Government sales:</strong> If you want to sell to the government, they require a VPAT before they'll buy from you</li>
+              <li><strong>Big company sales:</strong> Many large companies also ask for VPATs before purchasing software</li>
+              <li><strong>Legal protection:</strong> Having a VPAT shows you're taking accessibility seriously</li>
+              <li><strong>Planning tool:</strong> It helps you see what accessibility problems you need to fix</li>
             </ul>
+           
+            <p><strong>How it works:</strong> The VPAT goes through each WCAG rule and you mark whether your product "Supports," "Partially Supports," "Does Not Support," or if the rule "Not Applicable" to your product. Be honest - lying on a VPAT can get you in legal trouble.</p>
           </div>
         </WCAGPrinciple>
 
@@ -1322,8 +1209,22 @@ export default function AccessibilityGuide() {
           </div>
         </WCAGPrinciple>
 
+
+
+
+
+
+
+
+
+
+
         <p>
           💡 <strong>Key Takeaway:</strong> WCAG provides the technical how-to, ADA provides the legal why, and VPAT provides the documentation framework. Together, they create a comprehensive approach to digital accessibility compliance that protects organizations legally while expanding market reach and demonstrating inclusive values.
+        </p>
+
+        <p>
+          🎯 <strong>Success Metrics:</strong> Track accessibility progress through automated testing scores, user feedback, reduced customer service accessibility requests, and improved task completion rates across all user groups. Effective accessibility programs show measurable improvements in both compliance metrics and user experience indicators.
         </p>
       </Section>
 
@@ -1461,7 +1362,7 @@ export const AccessibleButton = () => (
             href="https://storybook.js.org/docs/writing-tests/accessibility-testing#accessibility-checks-with-a11y-addon"
             target="_blank"
             rel="noopener noreferrer"
-            style={{color: '#0066cc', textDecoration: 'underline'}}
+            style={linkStyle}
           >
             Storybook Accessibility Testing Documentation
           </a>{' '}
@@ -1525,10 +1426,10 @@ export const AccessibleButton = () => (
           <div>
             <h3><FaCode style={{ marginRight: '8px', color: '#0066cc' }} />WCAG Official Documentation</h3>
             <ul>
-              <li><strong><a href="https://www.w3.org/WAI/WCAG21/quickref/" target="_blank" rel="noopener noreferrer" style={{color: '#0066cc', textDecoration: 'underline'}}>WCAG 2.1 Quick Reference</a>:</strong> Interactive checklist with techniques and examples</li>
-              <li><strong><a href="https://www.w3.org/WAI/WCAG22/Understanding/" target="_blank" rel="noopener noreferrer" style={{color: '#0066cc', textDecoration: 'underline'}}>Understanding WCAG 2.2</a>:</strong> Detailed explanations of each success criterion</li>
-              <li><strong><a href="https://www.w3.org/WAI/WCAG22/Techniques/" target="_blank" rel="noopener noreferrer" style={{color: '#0066cc', textDecoration: 'underline'}}>WCAG 2.2 Techniques</a>:</strong> Technical implementation methods and code examples</li>
-              <li><strong><a href="https://www.w3.org/WAI/test-evaluate/" target="_blank" rel="noopener noreferrer" style={{color: '#0066cc', textDecoration: 'underline'}}>Testing & Evaluation Resources</a>:</strong> W3C testing methodologies and tools</li>
+              <li><strong><a href="https://www.w3.org/WAI/WCAG21/quickref/" target="_blank" rel="noopener noreferrer" style={linkStyle}>WCAG 2.1 Quick Reference</a>:</strong> Interactive checklist with techniques and examples</li>
+              <li><strong><a href="https://www.w3.org/WAI/WCAG22/Understanding/" target="_blank" rel="noopener noreferrer" style={linkStyle}>Understanding WCAG 2.2</a>:</strong> Detailed explanations of each success criterion</li>
+              <li><strong><a href="https://www.w3.org/WAI/WCAG22/Techniques/" target="_blank" rel="noopener noreferrer" style={linkStyle}>WCAG 2.2 Techniques</a>:</strong> Technical implementation methods and code examples</li>
+              <li><strong><a href="https://www.w3.org/WAI/test-evaluate/" target="_blank" rel="noopener noreferrer" style={linkStyle}>Testing & Evaluation Resources</a>:</strong> W3C testing methodologies and tools</li>
             </ul>
           </div>
         </WCAGPrinciple>
@@ -1537,10 +1438,10 @@ export const AccessibleButton = () => (
           <div>
             <h3><FaGavel style={{ marginRight: '8px', color: '#0066cc' }} />Legal & ADA Resources</h3>
             <ul>
-              <li><strong><a href="https://www.ada.gov/" target="_blank" rel="noopener noreferrer" style={{color: '#0066cc', textDecoration: 'underline'}}>ADA.gov Official Site</a>:</strong> U.S. Department of Justice ADA information and guidance</li>
-              <li><strong><a href="https://www.section508.gov/" target="_blank" rel="noopener noreferrer" style={{color: '#0066cc', textDecoration: 'underline'}}>Section 508 Compliance</a>:</strong> Federal accessibility requirements and resources</li>
-              <li><strong><a href="https://www.dol.gov/agencies/ofccp/about/compliance-assistance/disability" target="_blank" rel="noopener noreferrer" style={{color: '#0066cc', textDecoration: 'underline'}}>DOL Disability Resources</a>:</strong> Department of Labor compliance assistance</li>
-              <li><strong><a href="https://usabilitygeek.com/ada-website-compliance-guide/" target="_blank" rel="noopener noreferrer" style={{color: '#0066cc', textDecoration: 'underline'}}>ADA Website Compliance Guide</a>:</strong> Comprehensive legal compliance overview</li>
+              <li><strong><a href="https://www.ada.gov/" target="_blank" rel="noopener noreferrer" style={linkStyle}>ADA.gov Official Site</a>:</strong> U.S. Department of Justice ADA information and guidance</li>
+              <li><strong><a href="https://www.section508.gov/" target="_blank" rel="noopener noreferrer" style={linkStyle}>Section 508 Compliance</a>:</strong> Federal accessibility requirements and resources</li>
+              <li><strong><a href="https://www.dol.gov/agencies/ofccp/about/compliance-assistance/disability" target="_blank" rel="noopener noreferrer" style={linkStyle}>DOL Disability Resources</a>:</strong> Department of Labor compliance assistance</li>
+              <li><strong><a href="https://usabilitygeek.com/ada-website-compliance-guide/" target="_blank" rel="noopener noreferrer" style={linkStyle}>ADA Website Compliance Guide</a>:</strong> Comprehensive legal compliance overview</li>
             </ul>
           </div>
         </WCAGPrinciple>
@@ -1549,10 +1450,10 @@ export const AccessibleButton = () => (
           <div>
             <h3><FaExclamationTriangle style={{ marginRight: '8px', color: '#ff9800' }} />VPAT Templates & Guidance</h3>
             <ul>
-              <li><strong><a href="https://www.itic.org/policy/accessibility/vpat" target="_blank" rel="noopener noreferrer" style={{color: '#0066cc', textDecoration: 'underline'}}>Official VPAT Templates</a>:</strong> ITI consortium's standardized VPAT formats</li>
-              <li><strong><a href="https://www.section508.gov/sell/vpat/" target="_blank" rel="noopener noreferrer" style={{color: '#0066cc', textDecoration: 'underline'}}>Section 508 VPAT Guidance</a>:</strong> Government guidance on completing VPATs</li>
-              <li><strong><a href="https://www.levelaccess.com/blog/vpat-guide/" target="_blank" rel="noopener noreferrer" style={{color: '#0066cc', textDecoration: 'underline'}}>VPAT Completion Guide</a>:</strong> Step-by-step instructions for creating accurate VPATs</li>
-              <li><strong><a href="https://www.tpgi.com/vpat-and-act-reporting/" target="_blank" rel="noopener noreferrer" style={{color: '#0066cc', textDecoration: 'underline'}}>VPAT Best Practices</a>:</strong> Professional guidance for VPAT accuracy and compliance</li>
+              <li><strong><a href="https://www.itic.org/policy/accessibility/vpat" target="_blank" rel="noopener noreferrer" style={linkStyle}>Official VPAT Templates</a>:</strong> ITI consortium's standardized VPAT formats</li>
+              <li><strong><a href="https://www.section508.gov/sell/vpat/" target="_blank" rel="noopener noreferrer" style={linkStyle}>Section 508 VPAT Guidance</a>:</strong> Government guidance on completing VPATs</li>
+              <li><strong><a href="https://www.levelaccess.com/blog/vpat-guide/" target="_blank" rel="noopener noreferrer" style={linkStyle}>VPAT Completion Guide</a>:</strong> Step-by-step instructions for creating accurate VPATs</li>
+              <li><strong><a href="https://www.tpgi.com/vpat-and-act-reporting/" target="_blank" rel="noopener noreferrer" style={linkStyle}>VPAT Best Practices</a>:</strong> Professional guidance for VPAT accuracy and compliance</li>
             </ul>
           </div>
         </WCAGPrinciple>
@@ -1561,10 +1462,10 @@ export const AccessibleButton = () => (
           <div>
             <h3><FaBook style={{ marginRight: '8px', color: '#0066cc' }} />Developer Resources & Guides</h3>
             <ul>
-              <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility" target="_blank" rel="noopener noreferrer" style={{color: '#0066cc', textDecoration: 'underline'}}>MDN Web Accessibility Guide</a>:</strong> Comprehensive developer documentation on web accessibility implementation</li>
-              <li><strong><a href="https://medium.com/offmessageorg/why-githubs-war-on-toasts-is-bad-news-for-accessibility-a88ddbad43b7" target="_blank" rel="noopener noreferrer" style={{color: '#0066cc', textDecoration: 'underline'}}>GitHub's War on Toasts and Accessibility</a>:</strong> Critical analysis of UI patterns and their accessibility implications</li>
-              <li><strong><a href="https://storybook.js.org/docs/writing-tests/accessibility-testing#accessibility-checks-with-a11y-addon" target="_blank" rel="noopener noreferrer" style={{color: '#0066cc', textDecoration: 'underline'}}>Storybook Accessibility Testing Documentation</a>:</strong> Component-level accessibility testing integration</li>
-              <li><strong><a href="https://validator.w3.org/" target="_blank" rel="noopener noreferrer" style={{color: '#0066cc', textDecoration: 'underline'}}>W3C Markup Validator</a>:</strong> HTML validation for semantic correctness</li>
+              <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility" target="_blank" rel="noopener noreferrer" style={linkStyle}>MDN Web Accessibility Guide</a>:</strong> Comprehensive developer documentation on web accessibility implementation</li>
+              <li><strong><a href="https://medium.com/offmessageorg/why-githubs-war-on-toasts-is-bad-news-for-accessibility-a88ddbad43b7" target="_blank" rel="noopener noreferrer" style={linkStyle}>GitHub's War on Toasts and Accessibility</a>:</strong> Critical analysis of UI patterns and their accessibility implications</li>
+              <li><strong><a href="https://storybook.js.org/docs/writing-tests/accessibility-testing#accessibility-checks-with-a11y-addon" target="_blank" rel="noopener noreferrer" style={linkStyle}>Storybook Accessibility Testing Documentation</a>:</strong> Component-level accessibility testing integration</li>
+              <li><strong><a href="https://validator.w3.org/" target="_blank" rel="noopener noreferrer" style={linkStyle}>W3C Markup Validator</a>:</strong> HTML validation for semantic correctness</li>
             </ul>
           </div>
         </WCAGPrinciple>
@@ -1573,15 +1474,15 @@ export const AccessibleButton = () => (
           <div>
             <h3><FaCog style={{ marginRight: '8px', color: '#0066cc' }} />Testing Tools & Resources</h3>
             <ul>
-              <li><strong><a href="https://webaim.org/resources/contrastchecker/" target="_blank" rel="noopener noreferrer" style={{color: '#0066cc', textDecoration: 'underline'}}>WebAIM Contrast Checker</a>:</strong> Online tool for color contrast validation</li>
-              <li><strong><a href="https://developer.chrome.com/docs/devtools/accessibility/contrast/" target="_blank" rel="noopener noreferrer" style={{color: '#0066cc', textDecoration: 'underline'}}>Chrome DevTools Accessibility</a>:</strong> Built-in browser accessibility testing features</li>
-              <li><strong><a href="https://www.deque.com/axe/devtools/" target="_blank" rel="noopener noreferrer" style={{color: '#0066cc', textDecoration: 'underline'}}>axe DevTools</a>:</strong> Browser extension for comprehensive accessibility auditing</li>
-              <li><strong><a href="https://wave.webaim.org/" target="_blank" rel="noopener noreferrer" style={{color: '#0066cc', textDecoration: 'underline'}}>WAVE Web Accessibility Evaluation Tool</a>:</strong> Visual accessibility testing with overlay feedback</li>
+              <li><strong><a href="https://webaim.org/resources/contrastchecker/" target="_blank" rel="noopener noreferrer" style={linkStyle}>WebAIM Contrast Checker</a>:</strong> Online tool for color contrast validation</li>
+              <li><strong><a href="https://developer.chrome.com/docs/devtools/accessibility/contrast/" target="_blank" rel="noopener noreferrer" style={linkStyle}>Chrome DevTools Accessibility</a>:</strong> Built-in browser accessibility testing features</li>
+              <li><strong><a href="https://www.deque.com/axe/devtools/" target="_blank" rel="noopener noreferrer" style={linkStyle}>axe DevTools</a>:</strong> Browser extension for comprehensive accessibility auditing</li>
+              <li><strong><a href="https://wave.webaim.org/" target="_blank" rel="noopener noreferrer" style={linkStyle}>WAVE Web Accessibility Evaluation Tool</a>:</strong> Visual accessibility testing with overlay feedback</li>
             </ul>
           </div>
         </WCAGPrinciple>
 
-        <p style={{marginTop: '1.5rem', fontStyle: 'italic', color: '#555'}}>
+        <p style={{marginTop: '1.5rem', fontStyle: 'italic', color: '#444'}}>
           <strong>Note:</strong> Accessibility standards and best practices continue to evolve.
           Regularly check these resources for the latest updates and guidelines to ensure your implementations remain current and compliant.
         </p>
