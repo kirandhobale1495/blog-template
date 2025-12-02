@@ -4,8 +4,13 @@ import { HeadPost } from './HeadPost'
 export const Post = ({ post }) => {
     const {
         link,
-        module: { meta },
+        module: { meta } = { meta: null },
     } = post
+
+    // Skip rendering if meta is not available
+    if (!meta) {
+        return null;
+    }
 
     return (
         <>

@@ -1,4 +1,10 @@
-export const HeadPost = ({ meta, isBlogPost }) => (
+export const HeadPost = ({ meta, isBlogPost }) => {
+  // Safely handle missing meta
+  if (!meta) {
+    return null;
+  }
+
+  return (
   <>
     <h1 className={isBlogPost ? 'great-title' : null} >{meta.title}</h1>
     <div className='details'>
@@ -32,4 +38,5 @@ export const HeadPost = ({ meta, isBlogPost }) => (
         `}
     </style>
   </>
-)
+  );
+}
