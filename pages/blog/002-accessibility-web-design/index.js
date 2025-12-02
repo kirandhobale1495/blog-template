@@ -354,17 +354,20 @@ export default function AccessibilityGuide() {
     {
       level: "A",
       description: "Minimum level (basic accessibility)",
-      usage: "Essential baseline requirements"
+      usage: "Essential baseline requirements",
+      color: "#28a745"
     },
     {
       level: "AA",
       description: "Industry standard (recommended for most businesses)",
-      usage: "Most common target for businesses"
+      usage: "Most common target for businesses",
+      color: "#ffc107"
     },
     {
       level: "AAA",
       description: "Highest level (for government agencies and essential services)",
-      usage: "Government and critical services"
+      usage: "Government and critical services",
+      color: "#dc3545"
     }
   ];
 
@@ -704,7 +707,7 @@ export default function AccessibilityGuide() {
         <Table
           role="table"
           tabIndex="0"
-          aria-labelledby="conformance-levels"
+          aria-labelledby="conformance-heading"
           aria-describedby="conformance-summary"
           onKeyDown={handleKeyPress}
         >
