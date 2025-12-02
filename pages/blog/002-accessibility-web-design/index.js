@@ -82,7 +82,6 @@ const AccessibleButton = styled.button`
  
   &:disabled {
     background: #ccc;
-    color: #333;
     cursor: not-allowed;
   }
 `;
@@ -822,7 +821,6 @@ export default function AccessibilityGuide() {
         <WCAGPrinciple>
           <div>
             <h3><FaExclamationTriangle style={dangerIconStyle} />Poor Contrast Examples (WCAG Violations)</h3>
-            <p className="sr-only">This section contains intentionally low-contrast examples to demonstrate accessibility violations. The text is difficult to read to show why this contrast ratio fails WCAG standards.</p>
             <div style={{ margin: '15px 0' }}>
               <div style={{
                 background: '#ffffff',
@@ -830,17 +828,15 @@ export default function AccessibilityGuide() {
                 padding: '15px',
                 border: '1px solid #ddd',
                 marginBottom: '10px',
-                borderRadius: '4px',
-                position: 'relative'
+                borderRadius: '4px'
               }}>
                 <strong>Light gray text on white background</strong> - Contrast ratio: 1.6:1 ❌ (Fails WCAG AA)
-                <span className="sr-only">This example demonstrates a contrast violation. The light gray text (#cccccc) on white background fails accessibility standards because users with low vision or color blindness cannot read it easily.</span>
               </div>
             </div>
           </div>
         </WCAGPrinciple>
 
-        <h3 id="contrast-requirements-heading">WCAG Contrast Requirements</h3>
+        <h3>WCAG Contrast Requirements</h3>
         <Table
           role="table"
           tabIndex="0"
@@ -1236,7 +1232,7 @@ export default function AccessibilityGuide() {
         <Table
           role="table"
           tabIndex="0"
-          aria-labelledby="testing-tools"
+          aria-labelledby="testing-tools-heading"
           aria-describedby="testing-tools-summary"
         >
           <caption id="testing-tools-summary" style={{paddingBottom: '1rem'}}>Comparison of accessibility testing tools with their features, advantages, and limitations</caption>
