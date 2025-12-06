@@ -1278,7 +1278,7 @@ export default function AccessibilityGuide() {
           </div>
         </WCAGPrinciple>
 
-        <CodeBlock>
+        <CodeBlock tabIndex="0" role="region" aria-label="Code example: Storybook accessibility addon installation">
           <code>{`# Install the addon
 npm install --save-dev @storybook/addon-a11y
 
@@ -1324,7 +1324,7 @@ export const parameters = {
           </div>
         </WCAGPrinciple>
 
-        <CodeBlock>
+        <CodeBlock tabIndex="0" role="region" aria-label="Code example: Storybook story with accessibility configuration">
           <code>{`// Example Story with a11y configuration
 export default {
   title: 'Button',
